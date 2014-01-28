@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Bookl</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <link rel="stylesheet" href="css/ionic.css">
+  <link rel="stylesheet" href="css/ionicons.min.css">
+
+  <script src="js/ionic.js"></script>
+  <script src="js/angular/angular.js"></script>
+  <script src="js/angular/angular-animate.js"></script>
+  <script src="js/angular/angular-route.js"></script>
+  <script src="js/angular/angular-touch.js"></script>
+  <script src="js/angular/angular-sanitize.js"></script>
+  <script src="js/angular-ui/angular-ui-router.js"></script>
+  <script src="js/ionic-angular.js"></script>
+  <script src="scripts/controllers.js"></script>
+  <script src="scripts/services.js"></script>
+  <script src="scripts/app.js"></script>
+
+  <!-- PARSE RELATED -->
+  <script src="//www.parsecdn.com/js/parse-1.2.16.min.js"></script>
+  
+  <!-- Epub related! -->
+  <script src="/js/reading/zip.min.js"></script>
+  <script src="/js/reading/epub.min.js"></script>
+  <link rel="stylesheet" href="css/read.css">
+
+
+</head>
+
+<body ng-app="bookl">
+  <div ng-controller="MenuCtrl">
+    <side-menus>
+
+      <!-- Center content -->
+      <pane side-menu-content nav-router>
+        <header class="bar bar-header bar-assertive">
+          <button class="button button-icon" ng-click="toggleLeft()"><i class="icon ion-navicon"></i>
+          </button>
+          <h1 class="title">Slide Me</h1>
+        </header>
+        <!-- where the content of each page will be rendered -->
+        <ng-view></ng-view>
+      </pane>
+
+      <!-- Left Side Menu -->
+      <side-menu side="left">
+        <header class="bar bar-header bar-assertive">
+          <h1 class="title">Bookl</h1>
+        </header>
+        <content has-header="true">
+          <list class="list" ng-click="toggleLeft()">
+            <a href="{{item.link}}" class="item item-icon-left" ng-repeat="item in menuList">
+              <i ng-class="item.iconClass"></i>
+              {{item.text}}
+            </a>
+          </list>
+        </content>
+      </side-menu>
+    </side-menus>
+  </div>
+</body>
