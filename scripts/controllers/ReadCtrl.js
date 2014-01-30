@@ -15,9 +15,9 @@ booklApp.controller('ReadCtrl', function($scope, $rootScope) {
             return;
         }
 
-        EPUBJS.filePath = "/js/reading/";
+        EPUBJS.filePath = "js/reading/";
         book = ePub();
-        var bookBasePath = "/books/";
+        var bookBasePath = "books/";
         var completePath = bookBasePath + $scope.book.fileName;
         console.log("want to open filepath" + completePath);
         book.open(completePath);
