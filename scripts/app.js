@@ -1,7 +1,6 @@
 var booklApp = angular.module('bookl', [
     'ionic',
     'ngRoute',
-    'booklControllers',
     'bookl.services',
     'bookl.models',
     'ngTouch',
