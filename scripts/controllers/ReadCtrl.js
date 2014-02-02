@@ -2,8 +2,16 @@ var booklApp = angular.module('bookl');
 
 booklApp.controller('ReadCtrl', function($scope, $rootScope) {
 
+    $scope.showHeader = true;
+
+    $scope.toggleHeading = function () {
+        console.log('toggling heading!');
+        $scope.showHeader = !$scope.showHeader;
+    };
+
     $scope.closeModal = function() {
-        //$scope.book = null;
+        //clean up everything inside area tag
+        
         $scope.modal.hide();
     };
 
@@ -22,6 +30,8 @@ booklApp.controller('ReadCtrl', function($scope, $rootScope) {
         console.log("want to open filepath" + completePath);
         book.open(completePath);
         book.renderTo("area");
+
+        $rootScope.currentBook = book;
 
     });
 

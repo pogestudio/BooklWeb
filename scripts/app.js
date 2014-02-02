@@ -2,6 +2,7 @@ var booklApp = angular.module('bookl', [
     'ionic',
     'ngRoute',
     'bookl.services',
+    //'bookl.directives',
     'bookl.models',
     'ngTouch',
 ]);
@@ -30,7 +31,7 @@ booklApp.config(['$routeProvider',
             controller: 'UserCtrl'
         }).
         otherwise({
-            redirectTo: '/discover'
+            redirectTo: '/find'
         });
     }
 ]);
