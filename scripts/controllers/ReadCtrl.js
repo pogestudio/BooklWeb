@@ -17,11 +17,16 @@ booklApp.controller('ReadCtrl', function($scope, $rootScope) {
 
         EPUBJS.filePath = "js/reading/";
         book = ePub();
+        
         var bookBasePath = "books/";
         var completePath = bookBasePath + $scope.book.fileName;
         console.log("want to open filepath" + completePath);
         book.open(completePath);
         book.renderTo("area");
+
+        book.on("renderer:pageChanged", function(cfi) {
+            console.log("at page:", cfi);
+        });
 
     });
 
