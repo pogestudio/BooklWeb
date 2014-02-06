@@ -6,8 +6,11 @@
     <h1 class="title">{{book.title}}
     </h1>
   </header>
-  <content has-header="{{showHeader}}">
-
+  <content has-header="false">
+    <div ng-show="showHeader">
+      <br>
+      <br>
+    </div>
     <div id="wrapper">
       <span id="overlay">
         <button class="testButton" ng-click="previousPage();">Left</button>
