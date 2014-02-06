@@ -1,4 +1,7 @@
 <div class="modal" ng-controller="ReadCtrl">
+<side-menus>
+  <!-- Center content -->
+  <pane side-menu-content>
 
   <header class="bar bar-header bar-positive" ng-show="showHeader">
     <button class="button left button-icon" ng-click="closeModal()"><i class="icon ion-close"></i>
@@ -20,4 +23,19 @@
       <div id="area"></div>
     </div>
   </content>
+  </pane>
+
+  <!-- Left menu -->
+  <side-menu side="left">
+  <list>
+  <item ng-repeat="chapter in toc">
+  {{chapter.title}}
+  </item>
+  </side-menu>
+
+  <!-- Right menu -->
+  <side-menu side="right">
+  </side-menu>
+</side-menus>
+
 </div>

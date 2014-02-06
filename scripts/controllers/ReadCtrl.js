@@ -41,4 +41,27 @@ booklApp.controller('ReadCtrl', function($scope, $rootScope) {
     $scope.nextPage = function() {
         book.nextPage();
     };
+
+    //TABLE OF CONTENT STUFF
+    $scope.toc = [];
+    var entry1 = {
+        title : "An epic journey",
+        id : 0,
+    };
+    var entry2 = {
+        title : "A silly goose",
+        id : 1,
+    };
+    var entry3 = {
+        title : "A farfetched thought",
+        id : 2,
+    };
+    var entry4 = {
+        title : "A life of events",
+        id : 3,
+    };
+    $scope.toc.push(entry1);
+    $scope.toc.push(entry2);
+    $scope.toc.push(entry3);
+    $scope.toc.push(entry4);
 });
