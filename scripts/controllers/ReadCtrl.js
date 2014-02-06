@@ -1,6 +1,6 @@
 var booklApp = angular.module('bookl');
 
-booklApp.controller('ReadCtrl', function($scope) {
+booklApp.controller('ReadCtrl', function($scope, FontProvider) {
 
     // BOOK RELATED
 
@@ -92,9 +92,26 @@ booklApp.controller('ReadCtrl', function($scope) {
 
     };
 
-    $scope.changeFont = function() {
+    $scope.changeFont = function(fontFamily) {
         // book.setStyle("font-family", "Times New Roman");
-        book.setStyle("font-family", "Arial");
+        book.setStyle("font-family", fontFamily);
+        $scope.chosenFontFamily = fontFamily;
+    };
+
+    $scope.currentPadding = 0;
+    $scope.changeWrapperPadding = function(pixelsToChange) {
+        $scope.currentPadding += pixelsToChange;
+        var wrapper = document.getElementById("wrapper");
+        var currentPadding = wrapper.style.padding;
+        //if the padding is set, get it from the style. if not, set it to 0.
+        var amtPadding = currentPadding === "" ? 0 : parseInt(currentPadding.split("px")[0],10);
+        var minPadding = 2;
+        amtPadding += pixelsToChange;
+        amtPadding = Math.max(amtPadding,minPadding);
+        
+        var newPadding = amtPadding + "px";
+
+        wrapper.style.padding = newPadding;
     };
 
     // Book.ready.all.then(function() {
@@ -102,8 +119,8 @@ booklApp.controller('ReadCtrl', function($scope) {
     // });
 
     $scope.leftButtons = [{
-        type: 'button button-positive',
-        content: '<i class="icon ion-navicon"></i>',
+        type: 'button-clear',
+        content: '<i class="icon ion-close"></i>',
         tap: function(e) {
             //close modal!
             $scope.modal.hide();
@@ -111,16 +128,19 @@ booklApp.controller('ReadCtrl', function($scope) {
     }];
 
     $scope.rightButtons = [{
-        type: 'button-positive',
-        content: '<i class="icon ion-paper-airplane"></i >',
+        type: 'button-clear',
+        content: '<i class="icon ion-paper-airplane padding-horizontal"></i >',
         tap: function(e) {
             $scope.toggleTextSettings();
         }
     }, {
-        type: 'button-positive',
-        content: '<i class="icon ion-navicon"></i >',
+        type: 'button-clear',
+        content: '<i class="icon ion-navicon padding-horizontal"></i >',
         tap: function(e) {
             $scope.toggleTOC();
         }
     }];
+
+    $scope.fonts = FontProvider.all();
+
 });

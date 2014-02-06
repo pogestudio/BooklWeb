@@ -48,16 +48,19 @@
 
         <list ng-show="showText">
           <item ng-click="changeFontSize(0.1);">
-            Increase font size
+            <i class="icon ion-ios7-plus-outline"></i > Font size
           </item>
           <item ng-click="changeFontSize(-0.1);">
-            Decrease FONT
+            <i class="icon ion-ios7-minus-outline"></i > Font size
           </item>
-          <item ng-click="changeFont();">
-            SET NEW FONT
+          <item ng-repeat="font in fonts" ng-click="changeFont(font.fontFamily)">
+            <span style="font-family:{{font.fontFamily}}">{{font.name}}</span>
           </item>
-          <item>
-            Text4
+          <item ng-click="changeWrapperPadding(20);">
+            <i class="icon ion-ios7-plus-outline"></i > Padding
+          </item>
+          <item ng-click="changeWrapperPadding(-20);">
+            <i class="icon ion-ios7-minus-outline"></i > Padding
           </item>
         </list>
       </content>
