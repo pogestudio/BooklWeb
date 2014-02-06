@@ -135,3 +135,19 @@ services.factory('MenuService', function() {
     }
   };
 });
+
+services.factory('FontProvider', function() {
+
+  var fonts = [
+      { name: 'Garamond', fontFamily: 'Garamond'},
+      { name: 'Arial', fontFamily: 'Arial'},
+      { name: 'Georgia', fontFamily: 'Georgia'},
+  ];
+
+  return {
+    all: function() {
+      return fonts;
+    }
+  };
+});
+
