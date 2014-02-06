@@ -36,7 +36,6 @@ booklApp.controller('ReadCtrl', function($scope, $rootScope) {
     });
 
     $scope.previousPage = function() {
-        console.log('prevpage?');
         book.prevPage();
     };
     $scope.nextPage = function() {
