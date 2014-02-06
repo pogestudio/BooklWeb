@@ -1,19 +1,8 @@
 var booklApp = angular.module('bookl');
 
-booklApp.controller('ReadCtrl', function($scope, $rootScope) {
+booklApp.controller('ReadCtrl', function($scope) {
 
-    $scope.showHeader = true;
-
-    $scope.toggleHeading = function () {
-        console.log('toggling heading!');
-        $scope.showHeader = !$scope.showHeader;
-    };
-
-    $scope.closeModal = function() {
-        //clean up everything inside area tag
-        
-        $scope.modal.hide();
-    };
+    // BOOK RELATED
 
     var book = null;
 
@@ -31,9 +20,34 @@ booklApp.controller('ReadCtrl', function($scope, $rootScope) {
         book.open(completePath);
         book.renderTo("area");
 
-        $rootScope.currentBook = book;
+        book.getMetadata().then(function(meta) {
+            $scope.headerTitle = meta.bookTitle;
+        });
+
+
+        loadTOC(book);
 
     });
+
+    var loadTOC = function(book) {
+        $scope.toc = [];
+        book.getToc().then(function(toc) {
+
+            // var $select = document.getElementById("toc"),
+            //     docfrag = document.createDocumentFragment();
+
+            toc.forEach(function(chapter) {
+                // var option = document.createElement("option");
+                var tocEntry = {
+                    title: chapter.label,
+                    cfi: chapter.href,
+                };
+                $scope.toc.push(tocEntry);
+            });
+
+        });
+    };
+
 
     $scope.previousPage = function() {
         book.prevPage();
@@ -42,26 +56,71 @@ booklApp.controller('ReadCtrl', function($scope, $rootScope) {
         book.nextPage();
     };
 
-    //TABLE OF CONTENT STUFF
-    $scope.toc = [];
-    var entry1 = {
-        title : "An epic journey",
-        id : 0,
+
+    $scope.goToBookLink = function(url) {
+        book.goto(url);
+        $scope.sideMenuController.close();
     };
-    var entry2 = {
-        title : "A silly goose",
-        id : 1,
+
+    // NAVIGATION RELATED
+
+    $scope.showHeader = true;
+
+    $scope.toggleHeading = function() {
+        $scope.showHeader = !$scope.showHeader;
+        $scope.sideMenuController.close();
     };
-    var entry3 = {
-        title : "A farfetched thought",
-        id : 2,
+
+    $scope.toggleTextSettings = function() {
+        $scope.rightMenuTitle = 'Text Settings';
+        $scope.showText = true;
+        $scope.sideMenuController.toggleRight();
     };
-    var entry4 = {
-        title : "A life of events",
-        id : 3,
+
+    $scope.toggleTOC = function() {
+        $scope.rightMenuTitle = 'TOC';
+        $scope.showText = false;
+        $scope.sideMenuController.toggleRight();
+
     };
-    $scope.toc.push(entry1);
-    $scope.toc.push(entry2);
-    $scope.toc.push(entry3);
-    $scope.toc.push(entry4);
+
+    var fontSize = 1.0;
+
+    $scope.changeFontSize = function(value) {
+        fontSize += value;
+        book.setStyle("font-size", fontSize + "em");
+
+    };
+
+    $scope.changeFont = function() {
+        // book.setStyle("font-family", "Times New Roman");
+        book.setStyle("font-family", "Arial");
+    };
+
+    // Book.ready.all.then(function() {
+    //     document.getElementById("loader").style.display = "none";
+    // });
+
+    $scope.leftButtons = [{
+        type: 'button button-positive',
+        content: '<i class="icon ion-navicon"></i>',
+        tap: function(e) {
+            //close modal!
+            $scope.modal.hide();
+        }
+    }];
+
+    $scope.rightButtons = [{
+        type: 'button-positive',
+        content: '<i class="icon ion-paper-airplane"></i >',
+        tap: function(e) {
+            $scope.toggleTextSettings();
+        }
+    }, {
+        type: 'button-positive',
+        content: '<i class="icon ion-navicon"></i >',
+        tap: function(e) {
+            $scope.toggleTOC();
+        }
+    }];
 });
