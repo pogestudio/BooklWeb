@@ -15,8 +15,34 @@ models.factory('ServerBook', function() {
     }, {
         // Class methods
         testprint: function() {
-            console.log('WORKS!! with ∏arse OBJECT class method:: ');
+            console.log('WORKS!! with Parse OBJECT class method:: ');
             // return the appropriate facebook image url or gravatar image url
+        },
+        findBooksMatching: function(query) {
+            var queryForTitle = new Parse.Query('ServerBook');
+            var regEx = "[.]*" + query + "[.]*";
+            var key = "title";
+            queryForTitle.matches(key, regEx, "i");
+
+            var queryForAuthor = new Parse.Query('ServerBook');
+            var regExAuthor = "[.]*" + query + "[.]*";
+            var keyAuthor = "author";
+            queryForAuthor.matches(keyAuthor, regExAuthor, "i");
+
+            //Constructs a Parse.Query that is the OR of the passed in queries.
+            var compoundQuery = Parse.Query.or(queryForTitle, queryForAuthor);
+
+
+
+            // queryForTitle.equalTo("title", query);
+
+            // var queryForAuthor = new Parse.Query('ServerBook');
+            // queryForTitle.equalTo("title", query);
+
+            // var queryForTitle = new Parse.Query('ServerBook');
+            // queryForTitle.equalTo("title", query);
+
+            return compoundQuery.find();
         },
         allBooks: function() {
             console.log('fetching all books from parse!');

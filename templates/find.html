@@ -2,13 +2,13 @@
   <br>
   <div class="item item-input-inset">
     <label class="item-input-wrapper">
-      <input type="text" ng-model="searchText" placeholder="Search...">
+      <input type="text" ng-model="searchText" placeholder="Search..." ng-change="search(searchText);">
     </label>
   </div>
 
   <!-- Center content -->
   <list>
-    <item ng-repeat="book in books | filter:searchText" ng-click="openModal(book)">
+    <item ng-repeat="book in books" ng-click="openModal(book)">
       <span ng-bind="book.title"></span>
       <span ng-bind="book.author"></span>
     </item>
