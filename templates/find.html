@@ -9,7 +9,8 @@
   <!-- Center content -->
   <list>
     <item ng-repeat="book in books | filter:searchText" ng-click="openModal(book)">
-      {{book.title}} - {{book.author}}
+      <span ng-bind="book.title"></span>
+      <span ng-bind="book.author"></span>
     </item>
   </list>
 </content>
