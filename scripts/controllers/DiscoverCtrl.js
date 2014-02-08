@@ -5,5 +5,7 @@ booklApp.controller('DiscoverCtrl', function($scope, FetchBooks) {
         $scope.sideMenuController.toggleLeft();
     };
 
-    $scope.books = FetchBooks.random(10);
+    FetchBooks.all().then(function(books) {
+        $scope.books = books;
+    });
 });

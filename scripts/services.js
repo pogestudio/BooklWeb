@@ -102,8 +102,11 @@ services.factory('FetchBooks', function(ServerBook) {
 
     return {
         all: function() {
-
             return TheServerBook.allBooks();
+        },
+        query: function(query) {
+
+            return TheServerBook.findBooksMatching(query);
         },
         random: function(amount) {
             // Simple index lookup

@@ -19,24 +19,11 @@ booklApp.controller('FindCtrl', function($scope, FetchBooks, $ionicModal) {
     };
 
 
-
-    FetchBooks.all().then(function(books) {
-        $scope.books = [];
-        console.log('fetched books');
-        //$scope.books = books;
-        console.log(JSON.stringify(books, null, 4));
-        console.log('BOOOOKS');
-        i = 0;
-        for (var book in books) {
-            $scope.books.push(books[book]);
-            //console.log(books[book].title);
-            i++;
-            if (i > 3) break;
-        }
-
-        console.log(JSON.stringify($scope.books, null, 4));
-
-    });
+    $scope.search = function(argument) {        
+        FetchBooks.query(argument).then(function(books) {
+            $scope.books = books;
+        });
+    };
 
     $scope.title = function(book) {
         return book.get("title");
