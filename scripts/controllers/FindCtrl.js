@@ -19,7 +19,8 @@ booklApp.controller('FindCtrl', function($scope, FetchBooks, $ionicModal) {
     };
 
 
-    $scope.search = function(argument) {        
+    $scope.search = function(argument) {     
+    console.log('want to search for..' + argument);
         FetchBooks.query(argument).then(function(books) {
             $scope.books = books;
         });
@@ -28,5 +29,10 @@ booklApp.controller('FindCtrl', function($scope, FetchBooks, $ionicModal) {
     $scope.title = function(book) {
         return book.get("title");
     };
+
+
+//DEBUG SHIT
+    $scope.searchText  = 'Richard Branson';
+    $scope.search($scope.searchText);
 
 });
