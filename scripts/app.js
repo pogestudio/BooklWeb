@@ -30,6 +30,10 @@ booklApp.config(['$routeProvider',
             templateUrl: 'templates/user.html',
             controller: 'UserCtrl'
         }).
+        when('/history', {
+            templateUrl: 'templates/history.html',
+            controller: 'HistoryCtrl'
+        }).
         otherwise({
             redirectTo: '/find'
         });

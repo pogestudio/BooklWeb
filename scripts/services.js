@@ -142,6 +142,10 @@ services.factory('MenuService', function() {
         text: 'User',
         iconClass: 'icon ion-android-contact',
         link: '#/user'
+    }, {
+        text: 'History',
+        iconClass: 'icon ion-ios7-clock-outline',
+        link: '#/history'
     }];
 
     return {
