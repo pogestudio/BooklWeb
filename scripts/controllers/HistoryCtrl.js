@@ -20,7 +20,7 @@ booklApp.controller('HistoryCtrl', function($scope, FetchBooks, $ionicModal) {
 
 
 
-    FetchBooks.query(argument).then(function(books) {
+    FetchBooks.historyForUser().then(function(books) {
         $scope.books = books;
     });
 
