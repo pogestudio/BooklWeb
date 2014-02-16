@@ -17,7 +17,7 @@ models.factory('ReadingSession', function() {
             this.startPos = previousStartOfPage;
             this.endPos = currentStartOfPage;
             this.timeSpent = secondsBetweenDates(timeUserBeganReading, new Date());
-            this.set('book', book);
+            this.book = book;
             //this.set('parent', book);
         },
         saveIfLongEnough: function() {
@@ -41,6 +41,26 @@ models.factory('ReadingSession', function() {
             return query.first();
         }
 
+    });
+
+    // Book
+    Object.defineProperty(ReadingSession.prototype, "book", {
+        get: function() {
+            return this.get("book");
+        },
+        set: function(aValue) {
+            this.set("book", aValue);
+        }
+    });
+
+    // ServerBook
+    Object.defineProperty(ReadingSession.prototype, "serverBook", {
+        get: function() {
+            return this.get("serverBook");
+        },
+        set: function(aValue) {
+            this.set("serverBook", aValue);
+        }
     });
 
     // Title property
