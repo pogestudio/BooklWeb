@@ -9,7 +9,7 @@
   <!-- Center content -->
   <list>
     <item ng-repeat="book in books" ng-click="openModal(book)">
-      <span ng-bind="book.title"></span>
+      <span ng-bind="book.title"></span> -- {{book.title}} -- {{ book.get("title") }}
       <span ng-bind="book.author"></span>
     </item>
   </list>

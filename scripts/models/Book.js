@@ -6,47 +6,49 @@ models.factory('Book', function() {
 
     var Book = Parse.Object.extend("Book", {
         //instance methods
-
-
+        testprintInstance: function() {
+            console.log('WORKS!! with Parse OBJECT instance method:: ');
+        }
     }, {
         // Class methods
         testprint: function() {
             console.log('WORKS!! with Parse OBJECT class method:: ');
             // return the appropriate facebook image url or gravatar image url
-        // },
-        // findBooksMatching: function(query) {
-        //     var queryForTitle = new Parse.Query('Book');
-        //     var regEx = "[.]*" + query + "[.]*";
-        //     var key = "title";
-        //     queryForTitle.matches(key, regEx, "i");
+            // },
+            // findBooksMatching: function(query) {
+            //     var queryForTitle = new Parse.Query('Book');
+            //     var regEx = "[.]*" + query + "[.]*";
+            //     var key = "title";
+            //     queryForTitle.matches(key, regEx, "i");
 
-        //     var queryForAuthor = new Parse.Query('Book');
-        //     var regExAuthor = "[.]*" + query + "[.]*";
-        //     var keyAuthor = "author";
-        //     queryForAuthor.matches(keyAuthor, regExAuthor, "i");
+            //     var queryForAuthor = new Parse.Query('Book');
+            //     var regExAuthor = "[.]*" + query + "[.]*";
+            //     var keyAuthor = "author";
+            //     queryForAuthor.matches(keyAuthor, regExAuthor, "i");
 
-        //     //Constructs a Parse.Query that is the OR of the passed in queries.
-        //     var compoundQuery = Parse.Query.or(queryForTitle, queryForAuthor);
+            //     //Constructs a Parse.Query that is the OR of the passed in queries.
+            //     var compoundQuery = Parse.Query.or(queryForTitle, queryForAuthor);
 
 
 
-        //     // queryForTitle.equalTo("title", query);
+            //     // queryForTitle.equalTo("title", query);
 
-        //     // var queryForAuthor = new Parse.Query('Book');
-        //     // queryForTitle.equalTo("title", query);
+            //     // var queryForAuthor = new Parse.Query('Book');
+            //     // queryForTitle.equalTo("title", query);
 
-        //     // var queryForTitle = new Parse.Query('Book');
-        //     // queryForTitle.equalTo("title", query);
+            //     // var queryForTitle = new Parse.Query('Book');
+            //     // queryForTitle.equalTo("title", query);
 
-        //     return compoundQuery.find();
-        // },
-        // allBooks: function() {
-        //     console.log('fetching all books from parse!');
+            //     return compoundQuery.find();
+            // },
+            // allBooks: function() {
+            //     console.log('fetching all books from parse!');
 
-        //     var query = new Parse.Query("Book");
-        //     query.descending("title");
-        //     return query.find();
-        // }
+            //     var query = new Parse.Query("Book");
+            //     query.descending("title");
+            //     return query.find();
+            // }
+        }
     });
 
     // Title property

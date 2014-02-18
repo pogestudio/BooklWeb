@@ -21,9 +21,21 @@ models.factory('ReadingSession', function() {
             //this.set('parent', book);
         },
         saveIfLongEnough: function() {
-            if(this.timeSpent > TIME_TO_BE_READ)
-            {
-                this.save();
+            if (this.timeSpent > TIME_TO_BE_READ) {
+                this.save({
+                }, {
+                    success: function(readingSession) {
+                        // The object was saved successfully.
+                        console.log('readingSession saved successfully!');
+                    },
+                    error: function(gameScore, error) {
+                        // The save failed.
+                        // error is a Parse.Error with an error code and description.
+                      console.log('readingSession NOT SAVED successfully!' + JSON.stringify(error,null,4));
+                    }
+                });
+
+
             }
         }
 

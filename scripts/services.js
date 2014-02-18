@@ -1,4 +1,4 @@
-var services = angular.module('bookl.services', ['bookl.models']);
+var services = angular.module('bookl.services',[]);
 
 /**
  * A simple example service that returns some data.
@@ -98,11 +98,13 @@ services.factory('FetchBooks', function(ServerBook) {
 
     // ];
 
-    var TheServerBook = Parse.Object.extend("ServerBook");
+
 
     return {
         all: function() {
-            return TheServerBook.allBooks();
+            var queryForBook = new Parse.Query('Book');
+    
+            return query.find();
         },
         historyForUser: function() {
             var query = 'Harry';
@@ -118,14 +120,15 @@ services.factory('FetchBooks', function(ServerBook) {
 
             //Constructs a Parse.Query that is the OR of the passed in queries.
             var compoundQuery = Parse.Query.or(historyQuery, queryForAuthor);
+            return compoundQuery.find();
         },
         query: function(query) {
-            var queryForTitle = new Parse.Query('ServerBook');
+            var queryForTitle = new Parse.Query('Book');
             var regEx = "[.]*" + query + "[.]*";
             var key = "title";
             queryForTitle.matches(key, regEx, "i");
 
-            var queryForAuthor = new Parse.Query('ServerBook');
+            var queryForAuthor = new Parse.Query('Book');
             var regExAuthor = "[.]*" + query + "[.]*";
             var keyAuthor = "author";
             queryForAuthor.matches(keyAuthor, regExAuthor, "i");

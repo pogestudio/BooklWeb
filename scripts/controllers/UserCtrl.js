@@ -39,103 +39,86 @@ booklApp.controller('UserCtrl', function($scope, $rootScope, $location, Book) {
             title: 'Losing My Virginity',
             author: 'Richard Branson',
             fileName: 'losing_my_virginity.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: 'Steve Jobs',
             author: 'Walter Isaacson',
             fileName: 'steve_jobs.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: 'Jag är Zlatan Ibrahimovic',
             author: 'David Lagercrantz',
             fileName: 'zlatan_ibrahimovic.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: 'The Lean Startup',
             author: 'Eric Ries',
             fileName: 'lean_startup.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography'],
         }, {
             title: 'A Game of Thrones',
             author: 'George R.R. Martin',
             fileName: 'game_of_thrones1.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: 'A Clash of Kings',
             author: 'George R.R. Martin',
             fileName: 'game_of_thrones1.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: 'A Storm of Swords',
             author: 'George R.R. Martin',
             fileName: 'game_of_thrones1.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: 'A Feast for Crows',
             author: 'George R.R. Martin',
             fileName: 'game_of_thrones1.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: 'A Dance with Dragons',
             author: 'George R.R. Martin',
             fileName: 'game_of_thrones1.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: 'Business Stripped Bare',
             author: 'Richard Branson',
             fileName: 'business_stripped_bare.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: "Harry Potter and the Philosopher's Stone",
             author: 'J.K. Rowlings',
             fileName: 'harry_potter1.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: "Harry Potter and the Chamber of Secrets",
             author: 'J.K. Rowlings',
             fileName: 'harry_potter2.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: "Harry Potter and the Prisoner of Azkaban",
             author: 'J.K. Rowlings',
             fileName: 'harry_potter3.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: "Harry Potter and the Goblet of Fire",
             author: 'J.K. Rowlings',
             fileName: 'harry_potter4.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: "Harry Potter and the Order of the Phoenix",
             author: 'J.K. Rowlings',
             fileName: 'harry_potter5.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: "Harry Potter and the Half-Blood Prince",
             author: 'J.K. Rowlings',
             fileName: 'harry_potter6.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }, {
             title: "Harry Potter and the Deathly Hallows",
             author: 'J.K. Rowlings',
             fileName: 'harry_potter7.epub',
-            characterCount : 0,
             genre : ['Business', 'Biography']
         }];
 
@@ -145,9 +128,11 @@ booklApp.controller('UserCtrl', function($scope, $rootScope, $location, Book) {
             var bookFromArray = bookArray[i];
             var book = new Book();
             book.title = bookFromArray.title;
+            console.log('title from book :'+ book.title + ': should be the same as form array :'+bookFromArray.title + ';');
             book.author = bookFromArray.author;
             book.fileName = bookFromArray.fileName;
             book.cost = 149.0;
+            book.amtOfCharacters = 32000;
             book.save();
         }
 
