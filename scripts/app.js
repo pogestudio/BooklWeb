@@ -5,6 +5,7 @@ var booklApp = angular.module('bookl', [
     //'bookl.directives',
     'bookl.models',
     'ngTouch',
+    'angularMoment',
 ]);
 
 booklApp.config(['$routeProvider',

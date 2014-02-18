@@ -7,5 +7,6 @@ booklApp.controller('DiscoverCtrl', function($scope, FetchBooks) {
 
     FetchBooks.all().then(function(books) {
         $scope.books = books;
+        $scope.$apply();
     });
 });

@@ -107,20 +107,11 @@ services.factory('FetchBooks', function(ServerBook) {
             return query.find();
         },
         historyForUser: function() {
-            var query = 'Harry';
             var historyQuery = new Parse.Query('ServerBook');
-            var regEx = "[.]*" + query + "[.]*";
-            var key = "title";
-            historyQuery.matches(key, regEx, "i");
-
-            var queryForAuthor = new Parse.Query('ServerBook');
-            var regExAuthor = "[.]*" + query + "[.]*";
-            var keyAuthor = "author";
-            queryForAuthor.matches(keyAuthor, regExAuthor, "i");
-
-            //Constructs a Parse.Query that is the OR of the passed in queries.
-            var compoundQuery = Parse.Query.or(historyQuery, queryForAuthor);
-            return compoundQuery.find();
+            historyQuery.include(["book"]);
+            historyQuery.descending("updatedAt");
+            
+            return historyQuery.find();
         },
         query: function(query) {
             var queryForTitle = new Parse.Query('Book');

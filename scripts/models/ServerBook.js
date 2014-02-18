@@ -53,6 +53,15 @@ models.factory('ServerBook', function() {
         }
     });
 
+    Object.defineProperty(Book.prototype, "book", {
+        get: function() {
+            return this.get("book");
+        },
+        set: function(aValue) {
+            this.set("book", aValue);
+        }
+    });
+
     Object.defineProperty(Book.prototype, "amtOfCharacters", {
         get: function() {
             return this.get("amtOfCharacters");
@@ -60,8 +69,8 @@ models.factory('ServerBook', function() {
         set: function(aValue) {
             this.set("amtOfCharacters", aValue);
         }
-    });   
-    
+    });
+
     Object.defineProperty(Book.prototype, "fileName", {
         get: function() {
             return this.get("fileName");
