@@ -1,7 +1,7 @@
 var booklApp = angular.module('bookl');
 
-booklApp.controller('HistoryCtrl', function($scope, FetchBooks, $ionicModal) {
 
+booklApp.controller('HistoryCtrl', function($scope, FetchBooks, Book, $ionicModal) {
 
 
     // Load the modal from the given template URL
@@ -20,8 +20,14 @@ booklApp.controller('HistoryCtrl', function($scope, FetchBooks, $ionicModal) {
 
 
 
-    FetchBooks.query(argument).then(function(books) {
-        $scope.books = books;
+    FetchBooks.historyForUser().then(function(serverBooks) {
+        $scope.books = [];
+        for (var i = 0; i < serverBooks.length; i++) {
+            var bookForServerBook = serverBooks[i].book;
+            bookForServerBook.set("lastRead", serverBooks[i].updatedAt);
+            $scope.books.push(bookForServerBook);
+            $scope.$apply();
+        }
     });
 
     $scope.title = function(book) {

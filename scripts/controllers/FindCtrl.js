@@ -1,6 +1,6 @@
 var booklApp = angular.module('bookl');
 
-booklApp.controller('FindCtrl', function($scope, FetchBooks, $ionicModal) {
+booklApp.controller('FindCtrl', function($scope, FetchBooks, Book, $ionicModal) {
 
 
 
@@ -19,10 +19,12 @@ booklApp.controller('FindCtrl', function($scope, FetchBooks, $ionicModal) {
     };
 
 
-    $scope.search = function(argument) {     
-    console.log('want to search for..' + argument);
+    $scope.search = function(argument) {
+        console.log('want to search for..' + argument);
         FetchBooks.query(argument).then(function(books) {
+            console.log('found : ' + books.length + " books");
             $scope.books = books;
+            $scope.$apply();
         });
     };
 
@@ -31,8 +33,8 @@ booklApp.controller('FindCtrl', function($scope, FetchBooks, $ionicModal) {
     };
 
 
-//DEBUG SHIT
-    $scope.searchText  = 'Richard Branson';
+    //DEBUG SHIT
+    $scope.searchText = 'Richard Branson';
     $scope.search($scope.searchText);
 
 });

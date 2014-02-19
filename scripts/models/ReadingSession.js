@@ -17,13 +17,25 @@ models.factory('ReadingSession', function() {
             this.startPos = previousStartOfPage;
             this.endPos = currentStartOfPage;
             this.timeSpent = secondsBetweenDates(timeUserBeganReading, new Date());
-            this.set('book', book);
+            this.book = book;
             //this.set('parent', book);
         },
         saveIfLongEnough: function() {
-            if(this.timeSpent > TIME_TO_BE_READ)
-            {
-                this.save();
+            if (this.timeSpent > TIME_TO_BE_READ) {
+                this.save({
+                }, {
+                    success: function(readingSession) {
+                        // The object was saved successfully.
+                        console.log('readingSession saved successfully!');
+                    },
+                    error: function(gameScore, error) {
+                        // The save failed.
+                        // error is a Parse.Error with an error code and description.
+                      console.log('readingSession NOT SAVED successfully!' + JSON.stringify(error,null,4));
+                    }
+                });
+
+
             }
         }
 
@@ -41,6 +53,26 @@ models.factory('ReadingSession', function() {
             return query.first();
         }
 
+    });
+
+    // Book
+    Object.defineProperty(ReadingSession.prototype, "book", {
+        get: function() {
+            return this.get("book");
+        },
+        set: function(aValue) {
+            this.set("book", aValue);
+        }
+    });
+
+    // ServerBook
+    Object.defineProperty(ReadingSession.prototype, "serverBook", {
+        get: function() {
+            return this.get("serverBook");
+        },
+        set: function(aValue) {
+            this.set("serverBook", aValue);
+        }
     });
 
     // Title property

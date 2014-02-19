@@ -53,41 +53,21 @@ models.factory('ServerBook', function() {
         }
     });
 
-    // Title property
-    Object.defineProperty(Book.prototype, "title", {
+    Object.defineProperty(Book.prototype, "book", {
         get: function() {
-            return this.get("title");
+            return this.get("book");
         },
         set: function(aValue) {
-            this.set("title", aValue);
+            this.set("book", aValue);
         }
     });
 
-    // Title property
-    Object.defineProperty(Book.prototype, "author", {
+    Object.defineProperty(Book.prototype, "amtOfCharacters", {
         get: function() {
-            return this.get("author");
+            return this.get("amtOfCharacters");
         },
         set: function(aValue) {
-            this.set("author", aValue);
-        }
-    });
-
-    Object.defineProperty(Book.prototype, "genres", {
-        get: function() {
-            return this.get("genres");
-        },
-        set: function(aValue) {
-            this.set("genres", aValue);
-        }
-    });
-
-    Object.defineProperty(Book.prototype, "cost", {
-        get: function() {
-            return this.get("cost");
-        },
-        set: function(aValue) {
-            this.set("cost", aValue);
+            this.set("amtOfCharacters", aValue);
         }
     });
 

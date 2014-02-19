@@ -174,7 +174,7 @@ booklApp.controller('ReadCtrl', function($scope, FontProvider, ReadingSession) {
                 //save the last read page if we are closing, so that we can pick up here next time.
                 initiateReadingSessionWithStartCFI(previousStartOfPage);
             }
-            //book.destroy();
+            book.destroy();
             $scope.modal.hide();
         }
     }];
