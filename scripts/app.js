@@ -2,8 +2,10 @@ var booklApp = angular.module('bookl', [
     'ionic',
     'ngRoute',
     'bookl.services',
+    //'bookl.directives',
     'bookl.models',
     'ngTouch',
+    'angularMoment',
 ]);
 
 booklApp.config(['$routeProvider',
@@ -29,8 +31,12 @@ booklApp.config(['$routeProvider',
             templateUrl: 'templates/user.html',
             controller: 'UserCtrl'
         }).
+        when('/history', {
+            templateUrl: 'templates/history.html',
+            controller: 'HistoryCtrl'
+        }).
         otherwise({
-            redirectTo: '/discover'
+            redirectTo: '/find'
         });
     }
 ]);

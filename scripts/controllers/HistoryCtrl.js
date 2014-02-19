@@ -1,7 +1,7 @@
 var booklApp = angular.module('bookl');
 
-booklApp.controller('FindCtrl', function($scope, FetchBooks, Book, $ionicModal) {
 
+booklApp.controller('HistoryCtrl', function($scope, FetchBooks, Book, $ionicModal) {
 
 
     // Load the modal from the given template URL
@@ -19,22 +19,19 @@ booklApp.controller('FindCtrl', function($scope, FetchBooks, Book, $ionicModal) 
     };
 
 
-    $scope.search = function(argument) {
-        console.log('want to search for..' + argument);
-        FetchBooks.query(argument).then(function(books) {
-            console.log('found : ' + books.length + " books");
-            $scope.books = books;
+
+    FetchBooks.historyForUser().then(function(serverBooks) {
+        $scope.books = [];
+        for (var i = 0; i < serverBooks.length; i++) {
+            var bookForServerBook = serverBooks[i].book;
+            bookForServerBook.set("lastRead", serverBooks[i].updatedAt);
+            $scope.books.push(bookForServerBook);
             $scope.$apply();
-        });
-    };
+        }
+    });
 
     $scope.title = function(book) {
         return book.get("title");
     };
-
-
-    //DEBUG SHIT
-    $scope.searchText = 'Richard Branson';
-    $scope.search($scope.searchText);
 
 });

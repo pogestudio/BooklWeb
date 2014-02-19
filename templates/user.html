@@ -1,6 +1,12 @@
 <!-- Center content -->
 <content has-header="true">
   <div class="container">
-    <button ng-click="logOut()">Log Out {{ sessionUser.get("username")}}!</button>
+    <button class="button button-assertive" ng-click="logOut()">Log Out {{ sessionUser.get("username")}}!</button>
   </div>
+
+  <h1>Admin Tools</h1>
+  <button class="button button-energized" ng-click="emptyBooks();">Clear Books</button>
+  <button class="button button-energized" ng-click="emptyMoments();">Clear Moments</button>
+  <button class="button button-royal" ng-click="seedBooks();">Seed Books</button>
+  <span ng-style="myStyle">{{consoleMessage}}</span>
 </content>

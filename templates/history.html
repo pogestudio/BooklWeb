@@ -8,8 +8,9 @@
 
   <!-- Center content -->
   <list>
-    <item ng-repeat="book in books" ng-click="openModal(book)">
-       {{book.title}} --  {{book.author}}
+    <item ng-repeat="book in books | filter:searchText" ng-click="openModal(book)">
+      {{book.title}} -- {{book.author}} -- last read:
+      <span am-time-ago="book.get('lastRead')"></span>
     </item>
   </list>
 </content>

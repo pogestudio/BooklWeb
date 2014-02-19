@@ -1,18 +1,70 @@
 <div class="modal" ng-controller="ReadCtrl">
+  <side-menus>
+    <!-- Center content -->
+    <pane side-menu-content drag-content="false">
 
+      <header-bar title="headerTitle" left-buttons="leftButtons" right-buttons="rightButtons" type="bar-positive" align-title="center" ng-show="showHeader">
+      </header-bar>
+      <!--       <header class="bar bar-header bar-positive" ng-show="showHeader"> -->
+      <!-- <button class="button left button-icon" ng-click="closeModal()"><i class="icon ion-close"></i>
+        </button>
 
+        <h1 class="title">{{bookTitle}}
+        </h1>
+        <button class="button right button-icon" ng-click="toggleTextSettings()"><i class="icon ion-paper-airplane"></i>
+        </button>
 
-  <header class="bar bar-header bar-positive">
-    <button class="button left button-icon" ng-click="closeModal()"><i class="icon ion-close"></i>
-    </button>
-    <h1 class="title">{{book.title}}
-    </h1>
-  </header>
-  <content has-header="true">
-    <div id="wrapper">
-      <div ng-click="previousPage();" class="arrow">‹</div>
-      <div id="area"></div>
-      <div ng-click="nextPage();" class="arrow">›</div>
-    </div>
-  </content>
+        <button class="button right button-icon" ng-click="toggleTOC()"><i class="icon ion-navicon"></i>
+        </button>
+      </header> -->
+      <content has-header="false">
+        <div ng-show="showHeader">
+          <br>
+          <br>
+        </div>
+        <div id="wrapper">
+          <div id="overlay">
+            <button class="testButton" ng-click="previousPage();">Left</button>
+            <button class="testButton" ng-click="toggleHeading();">Middle</button>
+            <button class="testButton" ng-click="nextPage();">Right</button>
+          </div>
+          <div id="area"></div>
+        </div>
+      </content>
+    </pane>
+
+    <!-- Right menu -->
+    <side-menu side="right">
+      <header class="bar bar-header bar-positive">
+        <h1 class="title">{{rightMenuTitle}}
+        </h1>
+      </header>
+      <content has-header="true">
+        <list ng-hide="showText">
+          <item ng-repeat="chapter in toc" ng-click="goToBookLink(chapter.cfi)">
+            {{chapter.title}}
+          </item>
+        </list>
+
+        <list ng-show="showText">
+          <item ng-click="changeFontSize(0.1);">
+            <i class="icon ion-ios7-plus-outline"></i > Font size
+          </item>
+          <item ng-click="changeFontSize(-0.1);">
+            <i class="icon ion-ios7-minus-outline"></i > Font size
+          </item>
+          <item ng-repeat="font in fonts" ng-click="changeFont(font.fontFamily)">
+            <span style="font-family:{{font.fontFamily}}">{{font.name}}</span>
+          </item>
+          <item ng-click="changeWrapperPadding(20);">
+            <i class="icon ion-ios7-plus-outline"></i > Padding
+          </item>
+          <item ng-click="changeWrapperPadding(-20);">
+            <i class="icon ion-ios7-minus-outline"></i > Padding
+          </item>
+        </list>
+      </content>
+    </side-menu>
+  </side-menus>
+
 </div>

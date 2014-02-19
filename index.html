@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <title>Bookl</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
 
   <link rel="stylesheet" href="css/ionic.css">
   <link rel="stylesheet" href="css/ionicons.min.css">
@@ -18,7 +20,6 @@
   <script src="js/angular-ui/angular-ui-router.js"></script>
   <script src="js/ionic-angular.js"></script>
 
-
   <!-- PARSE RELATED -->
   <script src="//www.parsecdn.com/js/parse-1.2.16.min.js"></script>
 
@@ -31,8 +32,22 @@
   <script src="scripts/controllers/MenuCtrl.js"></script>
   <script src="scripts/controllers/LoginCtrl.js"></script>
   <script src="scripts/controllers/UserCtrl.js"></script>
+  <script src="scripts/controllers/HistoryCtrl.js"></script>
+
+  <!-- MODELS -->
+  <script src="scripts/models/BooklUser.js"></script>
+  <!-- bookluser contains the service constructing code thingy -->
+  <script src="scripts/models/ServerBook.js"></script>
+  <script src="scripts/models/Book.js"></script>
+  <script src="scripts/models/ReadingSession.js"></script>
+
+
   <script src="scripts/services.js"></script>
-  <script src="scripts/models.js"></script>
+  <script src="scripts/directives.js"></script>
+
+  <!-- RANDOM RELATED -->
+  <script src="js/angular-moment/moment.js"></script>
+  <script src="js/angular-moment/angular-moment.js"></script>
 
 
   <!-- Epub related! -->
