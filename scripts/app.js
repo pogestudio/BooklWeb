@@ -47,7 +47,6 @@ booklApp.run(function($rootScope, $location, BooklUser) {
 
         $rootScope.sessionUser = Parse.User.current();
 
-
         // register listener to watch route changes
         $rootScope.$on('$routeChangeStart', function(event, next, current) {
             if ($rootScope.sessionUser === null) {
@@ -59,6 +58,8 @@ booklApp.run(function($rootScope, $location, BooklUser) {
                     $location.path("/login");
                 }
             }
+
+            $rootScope.title = next.controller.substring(0,next.controller.length - 4);
         });
 
     }

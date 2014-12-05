@@ -116,12 +116,12 @@ services.factory('FetchBooks', function(ServerBook) {
         query: function(query) {
             var queryForTitle = new Parse.Query('Book');
             var regEx = "[.]*" + query + "[.]*";
-            var key = "title";
+            var key = "search_title";
             queryForTitle.matches(key, regEx, "i");
 
             var queryForAuthor = new Parse.Query('Book');
             var regExAuthor = "[.]*" + query + "[.]*";
-            var keyAuthor = "author";
+            var keyAuthor = "search_author";
             queryForAuthor.matches(keyAuthor, regExAuthor, "i");
 
             //Constructs a Parse.Query that is the OR of the passed in queries.
